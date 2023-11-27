@@ -119,7 +119,7 @@ namespace BoatAttack
             c.a = 0.5f;
             Gizmos.color = c;
 
-            if (!_foundPath) return;
+            if (!_foundPath || _pathPoint == null) return;
 
             Gizmos.DrawLine(transform.position + (Vector3.up * 0.1f),
                 WaypointGroup.Instance.GetWaypoint(CurWp).point);
@@ -127,6 +127,7 @@ namespace BoatAttack
 
             c = Color.red;
             Gizmos.color = c;
+
             if (_pathPoint[_curPoint] != Vector3.zero)
                 Gizmos.DrawLine(transform.position + (Vector3.up * 0.1f), _pathPoint[_curPoint]);
         }
@@ -135,6 +136,9 @@ namespace BoatAttack
         {
             var c = Color.yellow;
             Gizmos.color = c;
+
+            if (_pathPoint == null)
+                return;
 
             for (var i = 0; i < _pathPoint.Length - 1; i++)
             {

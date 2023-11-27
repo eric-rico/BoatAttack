@@ -21,7 +21,7 @@ public class SkyboxFeature : ScriptableRendererFeature
         public override void Configure(CommandBuffer cmd, RenderTextureDescriptor cameraTextureDescriptor)
         {
             if (system == null)
-                system = FindObjectOfType<SkyboxSystem>();
+                system = FindFirstObjectByType<SkyboxSystem>();
             m_RenderStateBlock.mask = RenderStateMask.Stencil | RenderStateMask.Depth;
             StencilState stencilState = StencilState.defaultValue;
             stencilState.SetCompareFunction(CompareFunction.Equal);
